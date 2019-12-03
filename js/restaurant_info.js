@@ -19,7 +19,6 @@ window.initMap = () => {
     }
   });
 }
-
 /**
  * Get current restaurant from page URL.
  */
@@ -51,30 +50,46 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
+  name.setAttribute("aria-label",`this is ${restaurant.name}restaurant`); 
+  name.tabIndex =0;
+    
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
+  address.tabIndex =0;
+  address.setAttribute("aria-label",`the adrress of ${restaurant.name}restaurant is${restaurant.address}`);
 
+    
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = `An image for ${restaurant.name}restaurant`;
+    image.tabIndex=0;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
-
+  cuisine.setAttribute("aria-label",`this is ${restaurant.cuisine_type}restaurant`); 
+  cuisine.tabIndex =0;
+    
   // fill operating hours
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
+    tabIndex =0;
   }
+    
   // fill reviews
   fillReviewsHTML();
+    
 }
 
 /**
  * Create restaurant operating hours HTML table and add it to the webpage.
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
-  const hours = document.getElementById('restaurant-hours');
+  const  hours = document.getElementById('restaurant-hours');
+   
+   
+    
   for (let key in operatingHours) {
     const row = document.createElement('tr');
 
@@ -86,6 +101,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 
+      
     hours.appendChild(row);
   }
 }
@@ -119,21 +135,26 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+ name.setAttribute("aria-label",`review name ${review.name}`);
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  name.setAttribute("aria-label",`review date ${review.date}`);
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.setAttribute("aria-label",`rating ${review.rating}`);
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+
   li.appendChild(comments);
 
   return li;
+    
 }
 
 /**

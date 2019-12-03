@@ -82,7 +82,6 @@ window.initMap = () => {
   });
   updateRestaurants();
 }
-
 /**
  * Update page and map for current restaurants.
  */
@@ -139,24 +138,31 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
+  image.tabIndex =0;
   image.className = 'restaurant-img';
+  image.alt=`image for ${restaurant.name}restaurant`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
   const name = document.createElement('h1');
+  name.tabIndex =0;
   name.innerHTML = restaurant.name;
   li.append(name);
 
   const neighborhood = document.createElement('p');
+  neighborhood.tabIndex =0;
   neighborhood.innerHTML = restaurant.neighborhood;
   li.append(neighborhood);
 
   const address = document.createElement('p');
+  address.tabIndex =0;
+  address.setAttribute ("aria-label",`the adrress of ${restaurant.name}restaurant is${restaurant.address}`);
   address.innerHTML = restaurant.address;
   li.append(address);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.setAttribute("aria-label",`View more details about${restaurant.name}restaurant`);
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 

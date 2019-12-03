@@ -407,4 +407,30 @@ margin-left: auto;
   }
 }
     
-    
+
+
+.skipLinks {
+    left:-999px;
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+}
+.skipLinks:focus, .skipLinks:active {
+    color:orange;
+    left: auto;
+    top: auto;
+    width: 30%;
+    height: auto;
+    overflow:auto;
+    margin: 30px 35%;
+    padding:5px;
+    text-align:center;
+    font-size:0.8em;
+    z-index:999;
+    display: flex;
+    flex-direction: row;
+}
+

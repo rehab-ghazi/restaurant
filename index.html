@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
@@ -12,6 +12,7 @@
   <header>
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
+         <a href ="#restaurants-list" class ="skipLinks">skip to restaurants list</a>
     </nav>
   </header>
 
@@ -25,9 +26,11 @@
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
+        <label for="neighborhoods-select">neighborhoods select</label>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
+        <label for="cuisines-select">cuisines select</label>
       </div>
       <ul id="restaurants-list"></ul>
     </section>
